@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pro_share/Provider/user_data.dart';
+import 'package:pro_share/Widgets/icon_container.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -90,19 +91,42 @@ class HomeScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15.0)),
                 margin: const EdgeInsets.all(8.0),
                 padding: const EdgeInsets.all(2.0),
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 0.5,
-                    mainAxisSpacing: 0.5,
-                  ),
-                  itemCount: 5,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      color: Colors.white,
-                      child: Center(child: Text('$index')),
-                    );
-                  },
+                child: GridView.count(
+                  primary: false,
+                  padding: const EdgeInsets.all(20),
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  crossAxisCount: 3,
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    const IconContainer(
+                      string: "Assets/Images/tumb.png",
+                    ),
+                    const IconContainer(
+                      string: "Assets/Images/reddit.png",
+                    ),
+                    const IconContainer(
+                      string: "Assets/Images/facebook.png",
+                    ),
+                    const IconContainer(
+                      string: "Assets/Images/twitter.png",
+                    ),
+                    const IconContainer(
+                      string: "Assets/Images/github.png",
+                    ),
+                    const IconContainer(
+                      string: "Assets/Images/insta.png",
+                    ),
+                    const IconContainer(
+                      string: "Assets/Images/messenger.png",
+                    ),
+                    const IconContainer(
+                      string: "Assets/Images/snapchat.png",
+                    ),
+                    const IconContainer(
+                      string: "Assets/Images/Linkedin.png",
+                    ),
+                  ],
                 ),
               ),
             )
