@@ -7,16 +7,21 @@ class IconContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: Center(
-        child: Image.asset(
-          string!,
-          height: 65,
-          width: 65,
+    return GestureDetector(
+      onTap: () {
+        print("Opening Sheet");
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: Center(
+          child: Image.asset(
+            string!,
+            height: 65,
+            width: 65,
+          ),
         ),
       ),
     );

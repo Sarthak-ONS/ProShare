@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pro_share/Provider/user_data.dart';
 import 'package:pro_share/Widgets/icon_container.dart';
+import 'package:pro_share/Screens/profile_qr.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,6 +13,11 @@ class HomeScreen extends StatelessWidget {
     return SizedBox(
       height: val,
     );
+  }
+
+  showQRCode(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (_) => const UserQRCode()));
   }
 
   @override
@@ -80,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.white,
               ),
               onTap: () {
-                print("generating QR Code for your Profile");
+                showQRCode(context);
               },
             ),
             buildSpacer(),

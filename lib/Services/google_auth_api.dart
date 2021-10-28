@@ -22,18 +22,21 @@ class GoogleAuthApi {
       if (await _googleSignIn.isSignedIn()) {
         await _firebaseAuth.signInWithCredential(credential);
         Provider.of<UserData>(context, listen: false).changeUserDetails(
-            _firebaseAuth.currentUser!.displayName,
-            _firebaseAuth.currentUser!.photoURL,
-            _firebaseAuth.currentUser!.email);
-        return true;
-      }
-
-      await _firebaseAuth.signInWithCredential(credential);
-      Provider.of<UserData>(context, listen: false).changeUserDetails(
           _firebaseAuth.currentUser!.displayName,
           _firebaseAuth.currentUser!.photoURL,
-          _firebaseAuth.currentUser!.email);
-
+          _firebaseAuth.currentUser!.email,
+          _firebaseAuth.currentUser!.uid,
+        );
+        return true;
+      }
+      print(_firebaseAuth.currentUser!.uid);
+      await _firebaseAuth.signInWithCredential(credential);
+      Provider.of<UserData>(context, listen: false).changeUserDetails(
+        _firebaseAuth.currentUser!.displayName,
+        _firebaseAuth.currentUser!.photoURL,
+        _firebaseAuth.currentUser!.email,
+        _firebaseAuth.currentUser!.uid,
+      );
       return true;
     } catch (e) {
       return false;
