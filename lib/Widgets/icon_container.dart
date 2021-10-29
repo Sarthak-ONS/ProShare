@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pro_share/Provider/user_data.dart';
+import 'package:pro_share/Services/firebase_firestore_api.dart';
 import 'package:provider/provider.dart';
 
 class IconContainer extends StatefulWidget {
@@ -16,8 +17,17 @@ class IconContainer extends StatefulWidget {
 }
 
 class _IconContainerState extends State<IconContainer> {
-  showEditContainer() {
-    print(Provider.of<UserData>(context, listen: false).linkMap);
+  showSnackBar(context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 3),
+        content: Text(message),
+      ),
+    );
+  }
+
+  TextEditingController textEditingController = TextEditingController();
+  showEditContainer(String? mediaValue) {
     showModalBottomSheet(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       isScrollControlled: true,
@@ -31,7 +41,7 @@ class _IconContainerState extends State<IconContainer> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
-                'Media Name',
+                '$mediaValue',
                 style: GoogleFonts.poppins(
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
@@ -49,8 +59,9 @@ class _IconContainerState extends State<IconContainer> {
               ),
               Container(
                 padding: const EdgeInsets.fromLTRB(4, 2, 4, 2),
-                child: const TextField(
-                  decoration: InputDecoration(
+                child: TextField(
+                  controller: textEditingController,
+                  decoration: const InputDecoration(
                       border: InputBorder.none,
                       focusedBorder: OutlineInputBorder(
                           borderSide:
@@ -74,7 +85,18 @@ class _IconContainerState extends State<IconContainer> {
                     },
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  try {
+                    print("Callling this mEthod ON PRESSED");
+                    Provider.of<UserData>(context, listen: false).addToMap(
+                        mediaValue!, textEditingController.value.text, context);
+                    Navigator.pop(context);
+                    FirebaseFireStoreAPI().updateLink(context);
+                    showSnackBar(context, "Successfully Updated Your Links");
+                  } on Exception catch (e) {
+                    print(e);
+                  }
+                },
                 child: Text(
                   'Submit',
                   style: GoogleFonts.poppins(
@@ -91,10 +113,17 @@ class _IconContainerState extends State<IconContainer> {
   }
 
   @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        showEditContainer();
+        showEditContainer(widget.socialMediaName);
+        print(widget.socialMediaName);
       },
       child: Container(
         decoration: BoxDecoration(

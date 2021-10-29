@@ -1,14 +1,24 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pro_share/Provider/user_data.dart';
+import 'package:pro_share/Screens/login_screen.dart';
+import 'package:pro_share/Screens/scan_qr_screen.dart';
+import 'package:pro_share/Screens/show_link.dart';
+import 'package:pro_share/Services/google_auth_api.dart';
 import 'package:pro_share/Widgets/icon_container.dart';
 import 'package:pro_share/Screens/profile_qr.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   Widget buildSpacer({double? val = 15}) {
     return SizedBox(
       height: val,
@@ -18,6 +28,19 @@ class HomeScreen extends StatelessWidget {
   showQRCode(BuildContext context) {
     Navigator.push(
         context, MaterialPageRoute(builder: (_) => const UserQRCode()));
+  }
+
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<UserData>(context, listen: false).changeUserDetails(
+      _firebaseAuth.currentUser!.displayName,
+      _firebaseAuth.currentUser!.photoURL,
+      _firebaseAuth.currentUser!.email,
+      _firebaseAuth.currentUser!.uid,
+    );
   }
 
   @override
@@ -33,6 +56,70 @@ class HomeScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (_) => AlertDialog(
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ListTile(
+                        title: Text(
+                          'Scan QR Code',
+                          style: GoogleFonts.poppins(),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const ScanOtherUserQR(),
+                            ),
+                          );
+                        },
+                      ),
+                      ListTile(
+                        title: Text(
+                          'View Your Profile Links',
+                          style: GoogleFonts.poppins(),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const ShowLinks(),
+                            ),
+                          );
+                        },
+                      ),
+                      //ShowLinks
+                      ListTile(
+                        title: Text(
+                          'Logout',
+                          style: GoogleFonts.poppins(),
+                        ),
+                        onTap: () {
+                          GoogleAuthApi().logout();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const LoginScreen(),
+                            ),
+                          );
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.menu_open,
+              color: Colors.white,
+            ),
+          )
+        ],
       ),
       body: Center(
         child: Column(
@@ -107,30 +194,39 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     const IconContainer(
                       string: "Assets/Images/tumb.png",
+                      socialMediaName: 'Tumbler',
                     ),
                     const IconContainer(
                       string: "Assets/Images/reddit.png",
+                      socialMediaName: 'Reddit',
                     ),
                     const IconContainer(
                       string: "Assets/Images/facebook.png",
+                      socialMediaName: 'Facebook',
                     ),
                     const IconContainer(
                       string: "Assets/Images/twitter.png",
+                      socialMediaName: 'Twitter',
                     ),
                     const IconContainer(
                       string: "Assets/Images/github.png",
+                      socialMediaName: 'Github',
                     ),
                     const IconContainer(
                       string: "Assets/Images/insta.png",
+                      socialMediaName: 'Instagram',
                     ),
                     const IconContainer(
                       string: "Assets/Images/messenger.png",
+                      socialMediaName: 'Messenger',
                     ),
                     const IconContainer(
                       string: "Assets/Images/snapchat.png",
+                      socialMediaName: 'Snapchat',
                     ),
                     const IconContainer(
                       string: "Assets/Images/Linkedin.png",
+                      socialMediaName: 'Linkedin',
                     ),
                   ],
                 ),

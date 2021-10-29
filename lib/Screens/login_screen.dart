@@ -40,8 +40,8 @@ class LoginScreen extends StatelessWidget {
               onPressed: () async {
                 final user = await GoogleAuthApi().loginWithGoogle(context);
                 if (user) {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HomeScreen()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const HomeScreen()));
                 }
               },
               child: Text(
