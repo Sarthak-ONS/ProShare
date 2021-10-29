@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:pro_share/Provider/update_firestore_provider.dart';
+import 'package:pro_share/Services/firebase_firestore_api.dart';
 import 'package:provider/provider.dart';
 
 class UserData extends ChangeNotifier {
@@ -32,5 +33,12 @@ class UserData extends ChangeNotifier {
     print("Updated Value in Map Succeddfully");
     print(linkMap);
     notifyListeners();
+  }
+
+  addLinksToFirestore(context) async {
+    if (await FirebaseFireStoreAPI().doProfileExists(context)) {
+    } else {
+      FirebaseFireStoreAPI().updateLink(context);
+    }
   }
 }

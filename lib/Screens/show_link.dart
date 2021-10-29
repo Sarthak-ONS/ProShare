@@ -46,32 +46,156 @@ class _ShowLinksState extends State<ShowLinks> {
               child: CircularProgressIndicator(),
             );
           }
-          if (snapshot.connectionState == ConnectionState.none) {
-            return Center(
-              child: Text(
-                'Please try Again Later',
-                style: GoogleFonts.poppins(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text('Error Fetchig Data'),
             );
           }
-          if (snapshot.data == null) {
-            return Center(
-              child: Text(
-                'No Links attached with your Profile',
-                style: GoogleFonts.poppins(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
+          Map linkMap = snapshot.data!.get("linkMap");
+          return ListView(
+            children: [
+              ListTile(
+                leading: const CircleAvatar(
+                  foregroundImage: AssetImage("Assets/Images/Linkedin.png"),
+                ),
+                title: Text(
+                  linkMap['Linkedin'] == ""
+                      ? "No Link added"
+                      : linkMap['Linkedin'],
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                  ),
                 ),
               ),
-            );
-          }
-          print(snapshot.data!.get("linkMap"));
-
-          return Container(
-            child: Text('This is'),
+              const SizedBox(
+                height: 5,
+              ),
+              ListTile(
+                leading: const CircleAvatar(
+                  foregroundImage: AssetImage("Assets/Images/facebook.png"),
+                ),
+                title: Text(
+                  linkMap['Facebook'] == ""
+                      ? "No Link added"
+                      : linkMap['Facebook'],
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              ListTile(
+                leading: const CircleAvatar(
+                  backgroundColor: Colors.white,
+                  foregroundImage: AssetImage("Assets/Images/github.png"),
+                ),
+                title: Text(
+                  linkMap['Github'] == "" ? "No Link added" : linkMap['Github'],
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              ListTile(
+                leading: const CircleAvatar(
+                  foregroundImage: AssetImage("Assets/Images/reddit.png"),
+                ),
+                title: Text(
+                  linkMap['reddit'] == "" ? "No Link added" : linkMap['reddit'],
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              ListTile(
+                leading: const CircleAvatar(
+                  backgroundColor: Colors.white,
+                  foregroundImage: AssetImage(
+                    "Assets/Images/insta.png",
+                  ),
+                ),
+                title: Text(
+                  linkMap['Instagram'] == ""
+                      ? "No Link added"
+                      : linkMap['Instagram'],
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              ListTile(
+                leading: const CircleAvatar(
+                  foregroundImage: AssetImage("Assets/Images/tumb.png"),
+                ),
+                title: Text(
+                  linkMap['Tumbler'] == ""
+                      ? "No Link added"
+                      : linkMap['Tumbler'],
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              ListTile(
+                leading: const CircleAvatar(
+                  foregroundImage: AssetImage("Assets/Images/snapchat.png"),
+                ),
+                title: Text(
+                  linkMap['Snapchat'] == ""
+                      ? "No Link added"
+                      : linkMap['Snapchat'],
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              ListTile(
+                leading: const CircleAvatar(
+                  foregroundImage: AssetImage("Assets/Images/messenger.png"),
+                ),
+                title: Text(
+                  linkMap['Messenger'] == ""
+                      ? "No Link added"
+                      : linkMap['Messenger'],
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              ListTile(
+                leading: const CircleAvatar(
+                  foregroundImage: AssetImage("Assets/Images/twitter.png"),
+                ),
+                title: Text(
+                  linkMap['Twitter'] == ""
+                      ? "No Link added"
+                      : linkMap['Twitter'],
+                  style: GoogleFonts.poppins(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ],
           );
         },
       ),

@@ -14,11 +14,11 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print(Provider.of<UserData>(context, listen: false).userPhotoUrl);
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     print(Provider.of<UserData>(context, listen: false).userPhotoUrl);
+      //   },
+      // ),
       backgroundColor: Colors.black,
       body: Center(
         child: Column(

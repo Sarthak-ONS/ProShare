@@ -41,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _firebaseAuth.currentUser!.email,
       _firebaseAuth.currentUser!.uid,
     );
+    Provider.of<UserData>(context, listen: false).addLinksToFirestore(context);
   }
 
   @override

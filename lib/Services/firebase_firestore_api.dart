@@ -20,4 +20,16 @@ class FirebaseFireStoreAPI {
       print(e);
     }
   }
+
+  Future doProfileExists(context) async {
+    DocumentSnapshot snapshot = await _firebaseFirestore
+        .collection('Users')
+        .doc(Provider.of<UserData>(context, listen: false).uID)
+        .get();
+    if (snapshot.exists) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
