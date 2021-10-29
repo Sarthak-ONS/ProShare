@@ -1,5 +1,7 @@
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+import 'package:flutter/material.dart';
 import 'package:pro_share/Provider/user_data.dart';
+import 'package:pro_share/Screens/show_link.dart';
 import 'package:provider/provider.dart';
 
 class DynamicLinkAPI {
@@ -10,14 +12,12 @@ class DynamicLinkAPI {
       if (deepLink != null) {
         print(deepLink.queryParameters.toString());
         print(deepLink.queryParameters['u']);
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (_) => SinglePostScreen(
-        //       postID: deepLink.queryParameters['postID']!,
-        //     ),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => ShowLinks(userID: deepLink.queryParameters['u']),
+          ),
+        );
       }
     }, onError: (OnLinkErrorException e) async {
       print('onLinkError');

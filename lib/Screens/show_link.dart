@@ -5,7 +5,9 @@ import 'package:pro_share/Provider/user_data.dart';
 import 'package:provider/provider.dart';
 
 class ShowLinks extends StatefulWidget {
-  const ShowLinks({Key? key}) : super(key: key);
+  const ShowLinks({Key? key, @required this.userID}) : super(key: key);
+
+  final String? userID;
 
   @override
   _ShowLinksState createState() => _ShowLinksState();
@@ -36,9 +38,7 @@ class _ShowLinksState extends State<ShowLinks> {
         elevation: 0,
       ),
       body: FutureBuilder(
-        future: _firebaseFirestore
-            .doc(Provider.of<UserData>(context, listen: false).uID!)
-            .get(),
+        future: _firebaseFirestore.doc(widget.userID).get(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

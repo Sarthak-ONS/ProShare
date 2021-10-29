@@ -44,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _firebaseAuth.currentUser!.uid,
     );
     Provider.of<UserData>(context, listen: false).addLinksToFirestore(context);
+    DynamicLinkAPI().initDynamicLinks(context);
   }
 
   @override
@@ -102,7 +103,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const ShowLinks(),
+                              builder: (_) => ShowLinks(
+                                userID: Provider.of<UserData>(
+                                  context,
+                                  listen: false,
+                                ).uID!,
+                              ),
                             ),
                           );
                         },
