@@ -6,10 +6,12 @@ import 'package:pro_share/Provider/user_data.dart';
 import 'package:pro_share/Screens/login_screen.dart';
 import 'package:pro_share/Screens/scan_qr_screen.dart';
 import 'package:pro_share/Screens/show_link.dart';
+import 'package:pro_share/Services/firebase_dynamic_link_api.dart';
 import 'package:pro_share/Services/google_auth_api.dart';
 import 'package:pro_share/Widgets/icon_container.dart';
 import 'package:pro_share/Screens/profile_qr.dart';
 import 'package:provider/provider.dart';
+import 'package:share/share.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -59,6 +61,17 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
+            onPressed: () async {
+              print(Provider.of<UserData>(context, listen: false).userPhotoUrl);
+              final url = await DynamicLinkAPI().createDynamicLink(context);
+              Share.share("$url");
+            },
+            icon: const Icon(
+              Icons.share,
+              color: Colors.white,
+            ),
+          ),
+          IconButton(
             onPressed: () {
               showDialog(
                 context: context,
@@ -98,7 +111,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ListTile(
                         title: Text(
                           'Logout',
-                          style: GoogleFonts.poppins(),
+                          style: GoogleFonts.poppins(
+                            color: Colors.red,
+                          ),
                         ),
                         onTap: () {
                           GoogleAuthApi().logout();
