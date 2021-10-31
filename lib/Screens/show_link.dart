@@ -80,7 +80,7 @@ class _ShowLinksState extends State<ShowLinks> {
             children: [
               ListTile(
                 minLeadingWidth: 30,
-                contentPadding: EdgeInsets.all(4.0),
+                contentPadding: const EdgeInsets.all(4.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0)),
                 tileColor: const Color(0xff2D2D35),
@@ -108,7 +108,7 @@ class _ShowLinksState extends State<ShowLinks> {
                   onPressed: () {
                     copytoClipBoard(linkMap['Linkedin']);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.copy,
                     color: Colors.white,
                   ),
@@ -119,7 +119,7 @@ class _ShowLinksState extends State<ShowLinks> {
               ),
               ListTile(
                 minLeadingWidth: 30,
-                contentPadding: EdgeInsets.all(4.0),
+                contentPadding: const EdgeInsets.all(4.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0)),
                 leading: const CircleAvatar(
@@ -137,7 +137,7 @@ class _ShowLinksState extends State<ShowLinks> {
                   onPressed: () {
                     copytoClipBoard(linkMap['Facebook']);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.copy,
                     color: Colors.white,
                   ),
@@ -157,7 +157,7 @@ class _ShowLinksState extends State<ShowLinks> {
               ),
               ListTile(
                 minLeadingWidth: 30,
-                contentPadding: EdgeInsets.all(4.0),
+                contentPadding: const EdgeInsets.all(4.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0)),
                 leading: const CircleAvatar(
@@ -176,7 +176,7 @@ class _ShowLinksState extends State<ShowLinks> {
                   onPressed: () {
                     copytoClipBoard(linkMap['Github']);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.copy,
                     color: Colors.white,
                   ),
@@ -194,7 +194,7 @@ class _ShowLinksState extends State<ShowLinks> {
               ),
               ListTile(
                 minLeadingWidth: 30,
-                contentPadding: EdgeInsets.all(4.0),
+                contentPadding: const EdgeInsets.all(4.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0)),
                 leading: const CircleAvatar(
@@ -212,7 +212,7 @@ class _ShowLinksState extends State<ShowLinks> {
                   onPressed: () {
                     copytoClipBoard(linkMap['reddit']);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.copy,
                     color: Colors.white,
                   ),
@@ -230,7 +230,7 @@ class _ShowLinksState extends State<ShowLinks> {
               ),
               ListTile(
                 minLeadingWidth: 30,
-                contentPadding: EdgeInsets.all(4.0),
+                contentPadding: const EdgeInsets.all(4.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0)),
                 leading: const CircleAvatar(
@@ -249,7 +249,7 @@ class _ShowLinksState extends State<ShowLinks> {
                   onPressed: () {
                     copytoClipBoard(linkMap['Instagram']);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.copy,
                     color: Colors.white,
                   ),
@@ -269,7 +269,7 @@ class _ShowLinksState extends State<ShowLinks> {
               ),
               ListTile(
                 minLeadingWidth: 30,
-                contentPadding: EdgeInsets.all(4.0),
+                contentPadding: const EdgeInsets.all(4.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0)),
                 leading: const CircleAvatar(
@@ -288,7 +288,7 @@ class _ShowLinksState extends State<ShowLinks> {
                   onPressed: () {
                     copytoClipBoard(linkMap['Tumbler']);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.copy,
                     color: Colors.white,
                   ),
@@ -308,7 +308,7 @@ class _ShowLinksState extends State<ShowLinks> {
               ),
               ListTile(
                 minLeadingWidth: 30,
-                contentPadding: EdgeInsets.all(4.0),
+                contentPadding: const EdgeInsets.all(4.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0)),
                 leading: const CircleAvatar(
@@ -327,7 +327,7 @@ class _ShowLinksState extends State<ShowLinks> {
                   onPressed: () {
                     copytoClipBoard(linkMap['Snapchat']);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.copy,
                     color: Colors.white,
                   ),
@@ -347,7 +347,7 @@ class _ShowLinksState extends State<ShowLinks> {
               ),
               ListTile(
                 minLeadingWidth: 30,
-                contentPadding: EdgeInsets.all(4.0),
+                contentPadding: const EdgeInsets.all(4.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0)),
                 leading: const CircleAvatar(
@@ -367,7 +367,7 @@ class _ShowLinksState extends State<ShowLinks> {
                   onPressed: () {
                     copytoClipBoard(linkMap['Messenger']);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.copy,
                     color: Colors.white,
                   ),
@@ -387,7 +387,7 @@ class _ShowLinksState extends State<ShowLinks> {
               ),
               ListTile(
                 minLeadingWidth: 30,
-                contentPadding: EdgeInsets.all(4.0),
+                contentPadding: const EdgeInsets.all(4.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0)),
                 leading: const CircleAvatar(
@@ -406,7 +406,7 @@ class _ShowLinksState extends State<ShowLinks> {
                   onPressed: () {
                     copytoClipBoard(linkMap['Twitter']);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.copy,
                     color: Colors.white,
                   ),
