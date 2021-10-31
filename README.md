@@ -15,6 +15,12 @@ The project also provides a easy shareable method of sharing profile via QR Code
   * User can also edit Uploaded social Media Links
 
  
+ 
+ 
+ <img src="![Screenshot_20211031-144952](https://user-images.githubusercontent.com/57105611/139577704-de40c19b-54c1-4867-b498-0af338e148d8.jpg)">
+ 
+ 
+ 
 Services used in backend are Firebase Firestore, Firebsase Dynamic Links, Firebase Authentication.
   
   
