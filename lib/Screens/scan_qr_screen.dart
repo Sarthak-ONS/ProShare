@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pro_share/Screens/show_link.dart';
+import 'package:pro_share/Services/firebase_firestore_api.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class ScanOtherUserQR extends StatefulWidget {
@@ -34,6 +36,11 @@ class _ScanOtherUserQRState extends State<ScanOtherUserQR> {
   }
 
   Barcode? data;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,8 +99,24 @@ class _ScanOtherUserQRState extends State<ScanOtherUserQR> {
 
   void onQRViewCreated(QRViewController controller) {
     this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
-      print(scanData.code);
+    controller.scannedDataStream.listen((scanData) async {
+      if (scanData.code.isNotEmpty && !scanData.code.contains("//")) {
+        print(scanData.code);
+        if (await FirebaseFireStoreAPI()
+            .doProfileExists(context, scanData.code.trim())) {
+          controller.stopCamera();
+          controller.dispose();
+          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => ShowLinks(
+                userID: scanData.code.trim(),
+              ),
+            ),
+          );
+        }
+      }
       setState(() {
         data = scanData;
       });

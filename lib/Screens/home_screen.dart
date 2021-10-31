@@ -86,6 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: GoogleFonts.poppins(),
                         ),
                         onTap: () {
+                          Navigator.pop(context);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -100,6 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: GoogleFonts.poppins(),
                         ),
                         onTap: () {
+                          Navigator.pop(context);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -124,12 +126,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         onTap: () {
                           GoogleAuthApi().logout();
                           FirebaseAuth.instance.signOut();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => const LoginScreen(),
-                            ),
-                          );
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const LoginScreen(),
+                              ),
+                              (route) => false);
                         },
                       )
                     ],

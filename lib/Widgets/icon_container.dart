@@ -113,6 +113,11 @@ class _IconContainerState extends State<IconContainer> {
   }
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   void dispose() {
     textEditingController.dispose();
     super.dispose();
@@ -128,13 +133,13 @@ class _IconContainerState extends State<IconContainer> {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(8.0),
         ),
         child: Center(
           child: Image.asset(
             widget.string!,
-            height: 65,
-            width: 65,
+            height: 50,
+            width: 50,
           ),
         ),
       ),

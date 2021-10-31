@@ -36,7 +36,8 @@ class UserData extends ChangeNotifier {
   }
 
   addLinksToFirestore(context) async {
-    if (await FirebaseFireStoreAPI().doProfileExists(context)) {
+    if (await FirebaseFireStoreAPI().doProfileExists(
+        context, Provider.of<UserData>(context, listen: false).uID!)) {
     } else {
       FirebaseFireStoreAPI().updateLink(context);
     }
