@@ -6,9 +6,8 @@ create a way so that user can share all his social media profile links on a sing
 <br>
 The project also provides a easy shareable method of sharing profile via QR Code.
 
-## Getting Started
 
-Main Features of The Project-<Br>
+## Main Features of The Project-<Br>
   * Easy Sign in- Google Sign In
   * Each user has its Unique QR Code
   * User can scan other user's code and view their Profile
