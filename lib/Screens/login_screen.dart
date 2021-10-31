@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pro_share/Services/google_auth_api.dart';
+import 'package:pro_share/Widgets/login_screen_animation.dart';
 
 import 'home_screen.dart';
 
@@ -16,13 +17,26 @@ class LoginScreen extends StatelessWidget {
       body: Stack(
         children: [
           Center(
-            child: Text(
-              'ProShare',
-              style: GoogleFonts.poppins(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'ProShare',
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
+                ),
+                const SizedBox(
+                  width: 8,
+                ),
+                const Icon(
+                  Icons.share,
+                  color: Colors.white,
+                  size: 40,
+                )
+              ],
             ),
           ),
           Align(
@@ -58,7 +72,7 @@ class LoginScreen extends StatelessWidget {
                     width: 15,
                   ),
                   Text(
-                    'Login',
+                    'Get Started',
                     style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
@@ -69,35 +83,81 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
           ),
-          buildRotatedWidget("reddit", 50, 50, 40),
-          buildRotatedWidget("reddit", MediaQuery.of(context).size.height - 90,
-              MediaQuery.of(context).size.width - 90, 40),
-          buildRotatedWidget("twitter", 450, 350, 37),
-          buildRotatedWidget("insta", 650, 110, 78),
-          buildRotatedWidget("Linkedin", 270, 18, 12),
-          buildRotatedWidget("snapchat", 170, 200, 31),
-          buildRotatedWidget(
-              "messenger", 55, MediaQuery.of(context).size.width - 90, 31),
-          buildRotatedWidget("reddit", 50, 50, 312),
-          buildRotatedWidget("facebook", MediaQuery.of(context).size.width + 75,
-              MediaQuery.of(context).size.height * 0.1, 315),
+          const BuildRotatedWidget(
+            image: "snapchat",
+            top: 50,
+            left: 50,
+            tilt: 40,
+          ),
+          BuildRotatedWidget(
+            image: "reddit",
+            top: MediaQuery.of(context).size.height - 90,
+            left: MediaQuery.of(context).size.width - 90,
+            tilt: 40,
+          ),
+          const BuildRotatedWidget(
+            image: "insta",
+            top: 650,
+            left: 110,
+            tilt: 78,
+          ),
+          const BuildRotatedWidget(
+            image: "twitter",
+            top: 450,
+            left: 350,
+            tilt: 37,
+          ),
+          const BuildRotatedWidget(
+            image: "Linkedin",
+            top: 270,
+            left: 18,
+            tilt: 12,
+          ),
+          BuildRotatedWidget(
+            image: "gmail",
+            top: MediaQuery.of(context).size.height - 65,
+            left: 18,
+            tilt: 12,
+          ),
+          const BuildRotatedWidget(
+            image: "google",
+            top: 570,
+            left: 200,
+            tilt: 12,
+          ),
+          BuildRotatedWidget(
+            image: "messenger",
+            top: 55,
+            left: MediaQuery.of(context).size.width - 90,
+            tilt: 12,
+          ),
+          BuildRotatedWidget(
+            image: "facebook",
+            top: MediaQuery.of(context).size.width + 75,
+            left: MediaQuery.of(context).size.height * 0.1,
+            tilt: 12,
+          ),
+          const BuildRotatedWidget(
+            image: "reddit",
+            top: 170,
+            left: 170,
+            tilt: 15,
+          ),
+          BuildRotatedWidget(
+            image: "twitch",
+            top: MediaQuery.of(context).size.height * 0.5 - 150,
+            left: MediaQuery.of(context).size.width - 95,
+            tilt: 15,
+            height: 150,
+            width: 150,
+          )
         ],
       ),
     );
   }
 
-  Widget buildRotatedWidget(
-          String image, double top, double left, double tilt) =>
-      Positioned(
-        top: top,
-        left: left,
-        child: RotationTransition(
-          turns: AlwaysStoppedAnimation(tilt / 360),
-          child: Image.asset(
-            "Assets/Images/$image.png",
-            height: 50,
-            width: 50,
-          ),
-        ),
-      );
+  // Widget buildRotatedWidget(
+  //         String image, double top, double left, double tilt) =>
+  //     ;
+
 }

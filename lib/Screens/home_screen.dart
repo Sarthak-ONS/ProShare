@@ -123,6 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         onTap: () {
                           GoogleAuthApi().logout();
+                          FirebaseAuth.instance.signOut();
                           Navigator.push(
                             context,
                             MaterialPageRoute(
