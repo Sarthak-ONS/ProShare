@@ -17,7 +17,8 @@ The project also provides a easy shareable method of sharing profile via QR Code
  
  
  
- <img src="![Screenshot_20211031-144952](https://user-images.githubusercontent.com/57105611/139577704-de40c19b-54c1-4867-b498-0af338e148d8.jpg)">
+
+<img src="https://user-images.githubusercontent.com/57105611/139577704-de40c19b-54c1-4867-b498-0af338e148d8.jpg" height="548">
  
  
  
